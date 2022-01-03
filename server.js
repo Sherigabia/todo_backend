@@ -2,10 +2,11 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
+const cors = require('cors')
 const todoControllers = require('./controllers/todoController')
 const PORT = process.env.PORT || 3000;
 
-
+app.use(cors());
 app.use(express.json())
 app.get('/', function(req,res){
    res.status(200).json({message: "Welcome to the Todo api"})
