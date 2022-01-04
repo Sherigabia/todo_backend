@@ -5,7 +5,13 @@ const Todo = require("../models/Todo.js")
 
 async function addTodo(req, res){
     try{
-     const newTodo = await  Todo.create(req.body);
+        const body = req.body;
+        const title = body.title;
+        const description = body.description;
+        const deadline = Date(body.deadline);
+
+
+     const newTodo = await  Todo.create({title, description, deadline});
     res.status(200).json(newTodo)
     }
     catch(error){
